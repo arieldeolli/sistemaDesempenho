@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="elementoRaiz" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemadesempenho.MinhasAvaliacoesFXMLController">
+   <children>
+      <Button fx:id="informaNota" layoutX="533.0" layoutY="25.0" mnemonicParsing="false" onAction="#irParaInformarNota" prefHeight="39.0" prefWidth="149.0" text="Informar nota">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="adicionaAvaliacao" layoutX="730.0" layoutY="25.0" mnemonicParsing="false" onAction="#irParaAdicionarNovaAvaliacao" prefHeight="39.0" prefWidth="237.0" text="Adicionar nova avaliacao">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tabela" layoutX="54.0" layoutY="89.0" prefHeight="534.0" prefWidth="913.0">
+        <columns>
+          <TableColumn fx:id="colNome" prefWidth="332.0" text="Nome da Avaliação" />
+          <TableColumn fx:id="colDisc" minWidth="0.0" prefWidth="294.0" text="Disciplina" />
+            <TableColumn fx:id="colMedia" prefWidth="93.3333740234375" text="Média" />
+            <TableColumn fx:id="colPeso" prefWidth="85.3333740234375" text="Peso" />
+            <TableColumn fx:id="colNota" prefWidth="114.0" text="Minha nota " />
+        </columns>
+      </TableView>
+      <Button fx:id="voltaTela1" layoutX="54.0" layoutY="651.0" mnemonicParsing="false" onAction="#voltarParaDashboard" prefHeight="39.0" prefWidth="104.0" text="Voltar">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+   </children>
+</AnchorPane>
