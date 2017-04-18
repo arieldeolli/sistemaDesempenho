@@ -78,19 +78,22 @@ public class MeuDesempenhoFXMLController extends InterfaceUsuario{
         m1 = Avaliacao.calculaMediaDaDisciplina(listaDisciplinas[i], "M1".toCharArray());
         m2 = Avaliacao.calculaMediaDaDisciplina(listaDisciplinas[i], "M2".toCharArray());
         m3 = Avaliacao.calculaMediaDaDisciplina(listaDisciplinas[i], "M3".toCharArray());
+        if( m1 + m2 + m3 == -3){
+            continue;
+        }
         
         
         XYChart.Series set1 = new   XYChart.Series<>();
         
-        if(!Double.isNaN(m1))
+        if(!Double.isNaN(m1) && m1 >= 0)
             set1.getData().add(new XYChart.Data(listaDisciplinas[i]+" - M1", m1));
-        if(!Double.isNaN(m2))
+        if(!Double.isNaN(m2) && m2 >= 0)
             set1.getData().add(new XYChart.Data(listaDisciplinas[i]+" - M2", m2));
-        if(!Double.isNaN(m3))
+        if(!Double.isNaN(m3) && m3 >= 0)
             set1.getData().add(new XYChart.Data(listaDisciplinas[i]+" - M3", m3));
-        if(!Double.isNaN(m1) && !Double.isNaN(m2) && !Double.isNaN(m3)){
+        if(!Double.isNaN(m1) && !Double.isNaN(m2) && !Double.isNaN(m3) && m1 != -1 && m2 != -1 && m3 != -1){
             mf = (m1+m2+m3)/3;
-            set1.getData().add(new XYChart.Data(listaDisciplinas[i]+" - MF", mf));
+            set1.getData().add(new XYChart.Data(listaDisciplinas[i]+" - MF", mf) );
         }
         tabela.getData().addAll(set1);
         }

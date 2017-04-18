@@ -52,23 +52,23 @@ public class Avaliacao{
     
     public static ArrayList<Avaliacao> obterListaAvaliacoes(){
         ArrayList<Avaliacao> listaConteudoTabela = new ArrayList<>();
-        Avaliacao a;
+        Avaliacao avaliacao;
         try {
             FileReader leitor = new FileReader("ListaProvas.csv");
             BufferedReader leitorLin = new BufferedReader(leitor);
             int cont = 0;
             while (leitorLin.ready()) {                
-                a = new Avaliacao(); 
+                avaliacao = new Avaliacao(); 
                 String linha = leitorLin.readLine();                
                 String[] array = linha.split(",+");
-                a.disciplina = array[0];
-                a.media = array[1].toCharArray();
-                a.nome = array[2];
-                a.peso = Double.parseDouble(array[3]);
+                avaliacao.disciplina = array[0];
+                avaliacao.media = array[1].toCharArray();
+                avaliacao.nome = array[2];
+                avaliacao.peso = Double.parseDouble(array[3]);
                 if(array.length > 4)
-                    a.nota = Double.parseDouble(array[4]);
-                a.identificadorNoArquivo = cont;
-                listaConteudoTabela.add(a);     
+                    avaliacao.nota = Double.parseDouble(array[4]);
+                avaliacao.identificadorNoArquivo = cont;
+                listaConteudoTabela.add(avaliacao);     
                 cont++;
             }
             leitorLin.close();
@@ -87,19 +87,25 @@ public class Avaliacao{
      */
     public static double calculaMediaDaDisciplina(String disciplina, char[] media){
         ArrayList<Avaliacao> listaAvaliacoes = obterListaAvaliacoes();
-        Avaliacao a1 = new Avaliacao();
-        Double m = 0.0;
+        Avaliacao avaliacaoDaVez = new Avaliacao();
+     
+        Double med = 0.0;
         Double peso = 0.0;
+        int numeroDeAvaliacoesDaDisciplina = 0;
         for(int i = 0;i<listaAvaliacoes.size();i++){
-            a1 = listaAvaliacoes.get(i);
-            if(a1.disciplina.equals(disciplina) && Arrays.equals(a1.media, media)){
-                m += (a1.nota*a1.peso);
-                peso += a1.peso;
-            }            
-           
+            avaliacaoDaVez = listaAvaliacoes.get(i);
+            if(avaliacaoDaVez.disciplina.equals(disciplina) && Arrays.equals(avaliacaoDaVez.media, media)){
+                peso += avaliacaoDaVez.peso;
+                med += (avaliacaoDaVez.nota*avaliacaoDaVez.peso)/peso;  
+                numeroDeAvaliacoesDaDisciplina++;
+            }
         }
-        return m/peso;
+        if(numeroDeAvaliacoesDaDisciplina == 0){
+            return -1;
         }
+        return med;
+        
+    }
 
     
     
@@ -121,6 +127,10 @@ public class Avaliacao{
 
     public char[] getMedia() {
         return media;
+    }
+    
+    public String getMediaEmString(){
+        return String.valueOf(this.media);
     }
 
     public void setMedia(char[] media) {

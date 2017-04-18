@@ -23,12 +23,7 @@ public class SistemaDesempenho extends Application{
     
     @Override
     public void start(Stage palco) throws Exception {
-        /*abre arquivo e apaga tudo q tem nele toda vez q o programa inicia*/
-        Writer out = new FileWriter("ListaProvas.csv");
-        //limpa
-        out.write("");
-        out.flush();
-       
+      
         DashboardFXMLController telaDashboard = new DashboardFXMLController();
         GerenciadorJanela.obterInstancia().inicializaPalco(palco, telaDashboard);
                 

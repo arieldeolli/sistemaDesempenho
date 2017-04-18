@@ -63,7 +63,7 @@ public class MinhasAvaliacoesFXMLController extends InterfaceUsuario{
         
         colNome.setCellValueFactory(new PropertyValueFactory<Avaliacao, String>("nome"));
         colDisc.setCellValueFactory(new PropertyValueFactory<Avaliacao, String>("disciplina"));
-        colMedia.setCellValueFactory(new PropertyValueFactory<Avaliacao, Character[]>("media"));
+        colMedia.setCellValueFactory(new PropertyValueFactory<Avaliacao, String>("mediaEmString"));
         colPeso.setCellValueFactory(new PropertyValueFactory<Avaliacao, Double>("peso"));
         colNota.setCellValueFactory(new PropertyValueFactory<Avaliacao, Double>("nota"));
         
@@ -103,7 +103,9 @@ public class MinhasAvaliacoesFXMLController extends InterfaceUsuario{
     @FXML 
     public void voltarParaDashboard() throws IOException {
         
-        GerenciadorJanela.obterInstancia().voltar();
+                GerenciadorJanela.obterInstancia().voltar();
+            
+    
     }
 }
 
