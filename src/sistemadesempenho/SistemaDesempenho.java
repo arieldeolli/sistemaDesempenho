@@ -23,7 +23,6 @@ public class SistemaDesempenho extends Application{
     
     @Override
     public void start(Stage palco) throws Exception {
-      
         DashboardFXMLController telaDashboard = new DashboardFXMLController();
         GerenciadorJanela.obterInstancia().inicializaPalco(palco, telaDashboard);
                 

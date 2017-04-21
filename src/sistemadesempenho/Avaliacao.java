@@ -184,6 +184,7 @@ public class Avaliacao{
     } 
     
     public void atualizar() throws IOException{
+        /* asagsagsg */
         Path path = Paths.get("ListaProvas.csv");
         List<String> linhas = Files.readAllLines(path);
 
@@ -198,8 +199,4 @@ public class Avaliacao{
         GerenciadorJanela.obterInstancia().abreJanela(tela2);
         GerenciadorJanela.obterInstancia().pilhaRetorno.pop();        
     }
-        
-    
-
-
 }
